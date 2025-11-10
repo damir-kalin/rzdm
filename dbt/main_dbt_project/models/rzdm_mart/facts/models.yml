@@ -1,0 +1,45 @@
+version: 2
+models:
+  - name: показатель_выручки_пму
+    description: "Показатели выручки ПМУ посчитанные по годам и каналам"
+    columns:
+      - name: дата
+        description: "дата"
+      - name: дорога_хк
+        description: "ключ дороги"
+      - name: медицинский_центр_хк
+        description: "ключ мед центра"
+      - name: тип_значения_хк
+        description: "ключ типа значения"     
+      - name: дискретность_хк
+        description: "ключ дискретности"     
+      - name: единица_измерения_хк
+        description: "ключ единицы измерения"      
+      - name: сумма
+        description: "посчитанная сумма"      
+      - name: метрика_хк
+        description: "ключ метрики"      
+      - name: тип_данных_хк
+        description: "ключ типа данных"         
+        
+  - name: mart_pmu_revenue
+    description: "Показатели выручки ПМУ посчитанные по годам и каналам"
+    columns:
+      - name: date
+        description: "дата"
+      - name: road_hk
+        description: "ключ дороги"
+      - name: medical_center_hk
+        description: "ключ мед центра"
+      - name: value_type_hk
+        description: "ключ типа значения"     
+      - name: discreteness_hk
+        description: "ключ дискретности"     
+      - name: unit_hk
+        description: "ключ единицы измерения"      
+      - name: value
+        description: "посчитанная сумма"      
+      - name: metric_hk
+        description: "ключ метрики"      
+      - name: data_type_hk
+        description: "ключ типа данных"          

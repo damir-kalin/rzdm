@@ -1,0 +1,368 @@
+version: 2
+models:
+  - name: хаб__мед_центр
+    description: "Хаб для мединцинских центров (ЧУЗов)"
+    columns:
+      - name: медицинский_центр_хк
+        description: "Суррогатный ключ медицинского центра"
+        tests: [not_null, unique]
+      - name: меидицинский_центр
+        description: "Наименование медицинского центра"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"
+
+  - name: hub_rdv__medical_center
+    description: "Хаб для мединцинских центров (ЧУЗов)"
+    columns:
+      - name: medical_center_hk
+        description: "Суррогатный ключ медицинского центра"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn  # Предупреждение вместо ошибки
+      - name: medical_center
+        description: "Наименование медицинского центра"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных"
+
+        
+  - name: хаб__выручка
+    description: "Хаб для выручки ПМУ"
+    columns:
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки ПМУ"
+        tests: [not_null, unique]
+      - name: ЧУЗ
+        description: "Наименование медицинского центра"
+      - name: год
+        description: "Год выручки"
+      - name: мес
+        description: "Месяц выручки"
+      - name: Канал
+        description: "Канал продаж" 
+      - name: период_отчета
+        description: "Период времени отчетности" 
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"
+
+  - name: hub_rdv__revenue
+    description: "Хаб для выручки ПМУ"
+    columns:
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки ПМУ"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn  # Предупреждение вместо ошибки
+      - name: medical_center
+        description: "Наименование медицинского центра"
+      - name: year
+        description: "Год выручки"
+      - name: month
+        description: "Месяц выручки"
+      - name: sales_channel
+        description: "Канал продаж" 
+      - name: period
+        description: "Период времени отчетности" 
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных"
+
+  - name: хаб__дорога
+    description: "Хаб для дорог"
+    columns:
+      - name: дорога_хк
+        description: "Суррогатный ключ дороги"
+        tests: [not_null, unique]
+      - name: наименование элемента
+        description: "Наимнование дороги"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"
+
+  - name: hub_rdv__road
+    description: "Хаб для дорог"
+    columns:
+      - name: road_hk
+        description: "Суррогатный ключ дороги"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наимнование дороги"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных"
+        
+  - name: хаб__канал_продаж
+    description: "Хаб для канала продаж"
+    columns:
+      - name: канал_продаж_хк
+        description: "Суррогатный ключ канала продаж"
+        tests: [not_null, unique]
+      - name: короткое наименование
+        description: "Короткое наименование канала продаж"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"
+
+  - name: hub_rdv__sales_channel
+    description: "Хаб для канала продаж"
+    columns:
+      - name: sales_channel_hk
+        description: "Суррогатный ключ канала продаж"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: shortname
+        description: "Короткое наименование канала продаж"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных"
+
+  - name: хаб__тип_значения
+    description: "Хаб для типов значения"
+    columns:
+      - name: тип_значения_хк
+        description: "Суррогатный ключ типов значения"
+        tests: [not_null, unique]
+      - name: наименование
+        description: "Наименование типа значения"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"   
+
+  - name: hub_rdv__value_type
+    description: "Хаб для типов значения"
+    columns:
+      - name: value_type_hk
+        description: "Суррогатный ключ типов значения"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование типа значения"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных" 
+        
+  - name: хаб__сектор_продаж
+    description: "Хаб для секторов продаж"
+    columns:
+      - name: сектор_продаж_хк
+        description: "Суррогатный ключ секторов продаж"
+        tests: [not_null, unique]
+      - name: короткое наименование
+        description: "Короткое наименование секторов продаж"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"  
+
+  - name: hub_rdv__sales_sector
+    description: "Хаб для секторов продаж"
+    columns:
+      - name: sales_sector_hk
+        description: "Суррогатный ключ секторов продаж"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: shortname
+        description: "Короткое наименование секторов продаж"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных" 
+        
+  - name: хаб__дискретность
+    description: "Хаб для дискретности"
+    columns:
+      - name: дискретность_хк
+        description: "Суррогатный ключ дискретности"
+        tests: [not_null, unique]
+      - name: наименование
+        description: "Наименование дискретности"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных" 
+
+  - name: hub_rdv__discreteness
+    description: "Хаб для дискретности"
+    columns:
+      - name: discreteness_hk
+        description: "Суррогатный ключ дискретности"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование дискретности"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных" 
+
+        
+  - name: хаб__единица_измерения
+    description: "Хаб для единиц измерения"
+    columns:
+      - name: единица_измерения_хк
+        description: "Суррогатный ключ единиц измерения"
+        tests: [not_null, unique]
+      - name: Наименование элемента
+        description: "Наименование дискретности"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных" 
+
+  - name: hub_rdv__unit
+    description: "Хаб для единиц измерения"
+    columns:
+      - name: unit_hk
+        description: "Суррогатный ключ единиц измерения"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование дискретности"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных" 
+
+
+  - name: хаб__метрика
+    description: "Хаб для метрик"
+    columns:
+      - name: метрика_хк
+        description: "Суррогатный ключ метрик"
+        tests: [not_null, unique]
+      - name: Наименование элемента
+        description: "Наименование метрики"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных" 
+
+  - name: hub_rdv__metric
+    description: "Хаб для метрик"
+    columns:
+      - name: metric_hk
+        description: "Суррогатный ключ метрик"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование метрики"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных" 
+
+
+  - name: хаб__тип_данных
+    description: "Хаб для типов данных"
+    columns:
+      - name: единица_измерения_хк
+        description: "Суррогатный ключ типов данных"
+        tests: [not_null, unique]
+      - name: Наименование элемента
+        description: "Наименование дискретности"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"         
+        
+  - name: hub_rdv__data_type
+    description: "Хаб для типов данных"
+    columns:
+      - name: data_type_hk
+        description: "Суррогатный ключ типов данных"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование дискретности"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных"         

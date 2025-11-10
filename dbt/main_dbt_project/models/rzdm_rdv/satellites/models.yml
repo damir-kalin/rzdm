@@ -1,0 +1,391 @@
+version: 1
+
+models:
+  - name: сат__выручка
+    description: "Таблица атрибутов выручки"
+    columns:
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests: [not_null]
+      - name: план_КДРО__руб
+        description: "План выручки КДРО в рублях"
+        tests: [not_null]
+      - name: план_утвержденный__руб
+        description: "Утвержденный план выручки в рублях"
+        tests: [not_null]
+      - name: факт__руб
+        description: "Фактическая выручка в рублях"
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"
+
+models:
+  - name: sat_rdv__revenue
+    description: "Таблица атрибутов выручки"
+    columns:
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests: [not_null]
+      - name: plan_kdro__rub
+        description: "План выручки КДРО в рублях"
+        tests: [not_null]
+      - name: plan_approved__rub
+        description: "Утвержденный план выручки в рублях"
+        tests: [not_null]
+      - name: fact__rub
+        description: "Фактическая выручка в рублях"
+      - name: load_date
+        description: "Время загрузки"
+      - name: source_system
+        description: "Наименование источника данных"
+
+  - name: сат__дискретность
+    description: "Таблица атрибутов дискретности"
+    columns:
+      - name: дискретность_хк
+        description: "Суррогатный ключ дискретности"
+        tests: [not_null]
+      - name: наименование
+        description: "Наименование дискретности"
+        tests: [not_null]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"        
+
+  - name: sat_rdv__discreteness
+    description: "Таблица атрибутов дискретности"
+    columns:
+      - name: discreteness_hk
+        description: "Суррогатный ключ дискретности"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование дискретности"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных" 
+
+  - name: сат__дорога
+    description: "Таблица атрибутов дорог"
+    columns:
+      - name: дорога_хк
+        description: "Суррогатный ключ дороги"
+        tests: [not_null]
+      - name: Наименование элемента
+        description: "Наименование дороги"
+        tests: [not_null]
+      - name: индекс
+        description: "Индекс из источника"
+      - name: код элемента справочника
+        description: "код элемента справочника из источника"  
+      - name: комментарии
+        description: "комментарии из источника"          
+      - name: порядок сортировки
+        description: "порядок сортировки из источника"     
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"   
+
+  - name: sat_rdv__road
+    description: "Таблица атрибутов дорог"
+    columns:
+      - name: road_hk
+        description: "Суррогатный ключ дороги"
+        tests: [not_null]
+      - name: fullname
+        description: "Наименование дороги"
+        tests: [not_null]
+      - name: id
+        description: "Индекс из источника"
+      - name: code
+        description: "код элемента справочника из источника"  
+      - name: comment
+        description: "комментарии из источника"          
+      - name: sort_type
+        description: "порядок сортировки из источника"     
+      - name: load_date
+        description: "Время загрузки"
+      - name: source_system
+        description: "Наименование источника данных" 
+
+  - name: сат__единица_измерения
+    description: "Таблица атрибутов единиц измерения"
+    columns:
+      - name: единица_измерения_хк
+        description: "Суррогатный ключ единиц измерения"
+        tests: [not_null, unique]
+      - name: Наименование элемента
+        description: "Наименование дискретности"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"     
+
+  - name: sat_rdv__unit
+    description: "Таблица атрибутов единиц измерения"
+    columns:
+      - name: unit_hk
+        description: "Суррогатный ключ единиц измерения"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование дискретности"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных"   
+
+  - name: сат__канал_продаж
+    description: "Таблица атрибутов канала продаж"
+    columns:
+      - name: канал_продаж_хк
+        description: "Суррогатный ключ канала продаж"
+        tests: [not_null]
+      - name: короткое наименование
+        description: "короткое наименование канала продаж"
+        tests: [not_null]
+      - name: индекс
+        description: "Индекс из источника"
+      - name: наименование
+        description: "полное наименование"  
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"  
+
+  - name: sat_rdv__sales_channel
+    description: "Таблица атрибутов канала продаж"
+    columns:
+      - name: sales_channel_hk
+        description: "Суррогатный ключ канала продаж"
+        tests: [not_null]
+      - name: shortname
+        description: "короткое наименование канала продаж"
+        tests: [not_null]
+      - name: id
+        description: "Индекс из источника"
+      - name: fullname
+        description: "полное наименование"  
+      - name: load_date
+        description: "Время загрузки"
+      - name: source_system
+        description: "Наименование источника данных" 
+
+  - name: сат__мед_центр
+    description: "Таблица атрибутов медицинского центра"
+    columns:
+      - name: медицинский_центр_хк
+        description: "Суррогатный ключ медицинского центра"
+        tests: [not_null]
+      - name: наименование элемента
+        description: "Название медицинского центра"
+        tests: [not_null]
+      - name: индекс
+        description: "Индекс из источника"
+      - name: код элемента справочника
+        description: "код справочника из источника"
+      - name: комментарии
+        description: "комментарии из источника"
+      - name: макрорегионы России
+        description: "макрорегион к которому относится мединцинский центр"
+      - name: полигоны ЖД
+        description: "полигон ЖД к которому относится мединцинский центр"
+      - name: порядок сортировки
+        description: "порядок сортировки из источника" 
+      - name: регионы России
+        description: "регион России к которому относится мединцинский центр" 
+      - name: финансовая структура
+        description: "финансовая структура"         
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"      
+
+  - name: sat_rdv__medical_center
+    description: "Таблица атрибутов медицинского центра"
+    columns:
+      - name: medical_center_hk
+        description: "Суррогатный ключ медицинского центра"
+        tests: [not_null]
+      - name: fullname
+        description: "Название медицинского центра"
+        tests: [not_null]
+      - name: id
+        description: "Индекс из источника"
+      - name: code
+        description: "код справочника из источника"
+      - name: comment
+        description: "комментарии из источника"
+      - name: macroregion
+        description: "макрорегион России к которому относится мединцинский центр"
+      - name: railway_polygon
+        description: "полигон ЖД к которому относится мединцинский центр"
+      - name: sort_type
+        description: "порядок сортировки из источника" 
+      - name: region
+        description: "регион России к которому относится мединцинский центр" 
+      - name: financial_structure
+        description: "финансовая структура"         
+      - name: load_date
+        description: "Время загрузки"
+      - name: source_system
+        description: "Наименование источника данных"
+
+  - name: сат__сектор_продаж
+    description: "Таблица атрибутов сектора продаж"
+    columns:
+      - name: сектор_продаж_хк
+        description: "Суррогатный ключ сектора продаж"
+        tests: [not_null]
+      - name: короткое наименование
+        description: "короткое наименование сектора продаж"
+        tests: [not_null]
+      - name: индекс
+        description: "Индекс из источника"
+      - name: код элемента справочника
+        description: "код справочника из источника"
+      - name: наименование
+        description: "полное наименование сектора продаж"
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных" 
+
+  - name: sat_rdv__sales_sector
+    description: "Таблица атрибутов сектора продаж"
+    columns:
+      - name: sales_sector_hk
+        description: "Суррогатный ключ сектора продаж"
+        tests: [not_null]
+      - name: shortname
+        description: "короткое наименование сектора продаж"
+        tests: [not_null]
+      - name: id
+        description: "Индекс из источника"
+      - name: код элемента справочника
+        description: "код справочника из источника"
+      - name: fullname
+        description: "полное наименование сектора продаж"
+      - name: load_date
+        description: "Время загрузки"
+      - name: source_system
+        description: "Наименование источника данных" 
+
+  - name: сат__тип_значения
+    description: "Таблица атрибутов типов значений"
+    columns:
+      - name: тип_значения_хк
+        description: "Суррогатный ключ сектора продаж"
+        tests: [not_null]
+      - name: наименование
+        description: "наименование"
+        tests: [not_null]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных"         
+
+  - name: sat_rdv__value_type
+    description: "Таблица атрибутов типов значений"
+    columns:
+      - name: value_type_hk
+        description: "Суррогатный ключ сектора продаж"
+        tests: [not_null]
+      - name: fullname
+        description: "наименование"
+        tests: [not_null]
+      - name: load_date
+        description: "Время загрузки"
+      - name: source_system
+        description: "Наименование источника данных" 
+
+        
+  - name: сат__метрика
+    description: "Таблица атрибутов метрик"
+    columns:
+      - name: метрика_хк
+        description: "Суррогатный ключ метрик"
+        tests: [not_null, unique]
+      - name: Наименование элемента
+        description: "Наименование метрики"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных" 
+
+  - name: sat_rdv__metric
+    description: "Таблица атрибутов метрик"
+    columns:
+      - name: metric_hk
+        description: "Суррогатный ключ метрик"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование метрики"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных"
+
+  - name: сат__тип_данных
+    description: "Таблица атрибутов типов данных"
+    columns:
+      - name: единица_измерения_хк
+        description: "Суррогатный ключ типов данных"
+        tests: [not_null, unique]
+      - name: Наименование элемента
+        description: "Наименование дискретности"
+        tests: [not_null, unique]
+      - name: метка_времени_загрузки
+        description: "Время загрузки"
+      - name: источник
+        description: "Наименование источника данных" 
+        
+  - name: sat_rdv__data_type
+    description: "Таблица атрибутов типов данных"
+    columns:
+      - name: data_type_hk
+        description: "Суррогатный ключ типов данных"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: fullname
+        description: "Наименование дискретности"
+        tests:
+          - not_null
+      - name: load_date
+        description: "Время загрузки"
+        tests:
+          - not_null
+      - name: source_system
+        description: "Наименование источника данных"         
+        

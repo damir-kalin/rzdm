@@ -1,0 +1,57 @@
+sandbox_dbt_project:
+  target: dev
+  outputs:
+    sandbox_db_hr:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: sandbox_db_hr
+      threads: 1
+      keepalives_idle: 0
+    sandbox_db_accounting:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: sandbox_db_accounting
+      threads: 1
+      keepalives_idle: 0
+    sandbox_db_financial:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: sandbox_db_financial
+      threads: 1
+      keepalives_idle: 0
+    sandbox_db_medical:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: sandbox_db_medical
+      threads: 1
+      keepalives_idle: 0
+    sandbox_db_commercial:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: sandbox_db_commercial
+      threads: 1
+      keepalives_idle: 0
+    stage:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: stage
+      threads: 1
+      keepalives_idle: 0

@@ -1,0 +1,104 @@
+version: 1
+
+models:
+  - name: unit_dim
+    description: "Таблица справочник единиц измерения"
+    columns:
+      - name: unit_hk
+        description: "Суррогатный ключ единиц измерения"
+      - name: full_name
+        description: "Наименование единиц измерения"
+        
+  - name: med_center_dim
+    description: "Таблица справочник медицинских центров"
+    columns:
+      - name: med_center_hk
+        description: "Суррогатный ключ медицинского центра"
+      - name: full_name
+        description: "Название медицинского центра"
+      - name: id
+        description: "Индекс из источника"
+      - name: code
+        description: "код справочника из источника"
+      - name: comment
+        description: "комментарии из источника"
+      - name: macroregion
+        description: "макрорегион к которому относится мединцинский центр"
+      - name: railway_polygon
+        description: "полигон ЖД к которому относится мединцинский центр"
+      - name: sort_type
+        description: "порядок сортировки из источника" 
+      - name: region
+        description: "регион России к которому относится мединцинский центр" 
+      - name: financial_structure
+        description: "финансовая структура"         
+        
+  - name: value_type_dim
+    description: "Таблица справочник типов значений"
+    columns:
+      - name: value_type_hk
+        description: "Суррогатный ключ сектора продаж"
+      - name: full_name
+        description: "наименование типа значения"
+
+  - name: road_dim
+    description: "Таблица справочник дорог"
+    columns:
+      - name: road_hk
+        description: "Суррогатный ключ дороги"
+      - name: full_name
+        description: "Наименование дороги"
+      - name: id
+        description: "Индекс из источника"
+      - name: code
+        description: "код элемента справочника из источника"  
+      - name: comment
+        description: "комментарии из источника"          
+      - name: sort_type
+        description: "порядок сортировки из источника"     
+        
+  - name: discreteness_dim
+    description: "Таблица справочник дискретности"
+    columns:
+      - name: discreteness_hk
+        description: "Суррогатный ключ дискретности"
+      - name: full_name
+        description: "Наименование дискретности"
+        
+  - name: metric_dim
+    description: "Таблица справочник дискретности"
+    columns:
+      - name: metric_hk
+        description: "Суррогатный ключ метрики"
+      - name: full_name
+        description: "Наименование метрики"
+     
+  - name: data_type_dim
+    description: "Таблица справочник дискретности"
+    columns:
+      - name: data_type_hk
+        description: "Суррогатный ключ типов данных"
+      - name: full_name
+        description: "Наименование типов данных"
+
+  - name: core_pmu_revenue
+    description: "Таблица справочник дискретности"
+    columns:
+      - name: date
+        description: "дата"
+      - name: road_hk
+        description: "Ключ дороги"        
+      - name: med_center_hk
+        description: "Ключ мед центра"   
+      - name: value_type_hk
+        description: "Ключ типов значений"   
+      - name: discreteness_hk
+        description: "Ключ дискретности"   
+      - name: unit_hk
+        description: "Ключ единиц измерения"   
+      - name: metric_hk
+        description: "Ключ метрики"   
+      - name: data_type_hk
+        description: "Ключ типов данных"           
+      - name: value
+        description: "сумма"          

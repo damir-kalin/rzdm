@@ -1,0 +1,306 @@
+version: 2
+
+models:
+  - name: линк_бдв__дискретность_выручка
+    description: "Связь выручки по дискретности"
+    columns:
+      - name: линк_дискретность_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: дискретность_хк
+        description: "Суррогатный ключ дороги"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__дискретность')
+              field: дискретность_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__выручка')
+              field: выручка_хк
+
+  - name: link_bdv__discreteness_revenue
+    description: "Связь выручки по дискретности"
+    columns:
+      - name: link_discreteness_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: discreteness_hk
+        description: "Суррогатный ключ дороги"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__discreteness')
+              field: discreteness_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__revenue')
+              field: revenue_hk
+
+  - name: линк_бдв__дорога_выручка
+    description: "Связь выручки по дорогам"
+    columns:
+      - name: линк_дорога_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: дорога_хк
+        description: "Суррогатный ключ дороги"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__дорога')
+              field: дорога_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__выручка')
+              field: выручка_хк
+
+  - name: link_bdv__road_revenue
+    description: "Связь выручки по дорогам"
+    columns:
+      - name: link_road_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: road_hk
+        description: "Суррогатный ключ дороги"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__road')
+              field: road_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__revenue')
+              field: revenue_hk
+
+  - name: линк_бдв__единица_измерения_выручка
+    description: "Связь выручки по единицам измерения"
+    columns:
+      - name: линк_единица_измерения_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: единица_измерения_хк
+        description: "Суррогатный ключ единиц измерения"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__единица_измерения')
+              field: единица_измерения_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__выручка')
+              field: выручка_хк
+
+  - name: link_bdv__unit_revenue
+    description: "Связь выручки по единицам измерения"
+    columns:
+      - name: link_unit_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: unit_hk
+        description: "Суррогатный ключ единиц измерения"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__unit')
+              field: unit_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__revenue')
+              field: revenue_hk
+
+  - name: линк_бдв__канал_продаж_выручка
+    description: "Связь выручки по каналам продаж"
+    columns:
+      - name: линк_канал_продаж_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: канал_продаж_хк
+        description: "Суррогатный ключ канала продаж"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__канал_продаж')
+              field: канал_продаж_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__выручка')
+              field: выручка_хк
+
+  - name: link_bdv__sales_channel_revenue
+    description: "Связь выручки по каналам продаж"
+    columns:
+      - name: link_sales_channel_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: sales_channel_hk
+        description: "Суррогатный ключ канала продаж"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__sales_channel')
+              field: sales_channel_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__revenue')
+              field: revenue_hk
+
+  - name: линк_бдв__мед_центр_выручка
+    description: "Связь выручки по медицинским центрам"
+    columns:
+      - name: линк_медицинский_центр_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: медицинский_центр_хк
+        description: "Суррогатный ключ медицинских центров"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__мед_центр')
+              field: медицинский_центр_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__выручка')
+              field: выручка_хк
+            
+  - name: link_bdv__medical_center_revenue
+    description: "Связь выручки по медицинским центрам"
+    columns:
+      - name: link_medical_center_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: medical_center_hk
+        description: "Суррогатный ключ медицинских центров"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__medical_center')
+              field: medical_center_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__revenue')
+              field: revenue_hk
+            
+  - name: линк_бдв__тип_значения_выручка
+    description: "Связь выручки по типам значений"
+    columns:
+      - name: линк_тип_значения_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: тип_значения_хк
+        description: "Суррогатный ключ типов значений"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__тип_значения')
+              field: дорога_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__выручка')
+              field: выручка_хк              
+
+  - name: link_bdv__value_type_revenue
+    description: "Связь выручки по типам значений"
+    columns:
+      - name: link_value_type_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: value_type_hk
+        description: "Суррогатный ключ типов значений"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__value_type')
+              field: value_type_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__revenue')
+              field: revenue_hk 
+
+  - name: линк_бдв__тип_данных_выручка
+    description: "Связь выручки по типам данных"
+    columns:
+      - name: линк_тип_данных_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: тип_данных_хк
+        description: "Суррогатный ключ типов данных"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__тип_данных')
+              field: дорога_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__выручка')
+              field: выручка_хк    
+
+  - name: link_bdv__data_type_revenue
+    description: "Связь выручки по типам данных"
+    columns:
+      - name: link_data_type_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: data_type_hk
+        description: "Суррогатный ключ типов данных"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__data_type')
+              field: data_type_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__revenue')
+              field: revenue_hk
+
+  - name: линк_бдв__метрика_выручка
+    description: "Связь выручки по метрикам"
+    columns:
+      - name: линк_метрика_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: метрика_хк
+        description: "Суррогатный ключ метрики"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__метрика')
+              field: метрика_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб_бдв__выручка')
+              field: выручка_хк                
+
+  - name: link_bdv__metric_revenue
+    description: "Связь выручки по метрикам"
+    columns:
+      - name: link_metric_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: metric_hk
+        description: "Суррогатный ключ метрик"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__metric')
+              field: metric_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('hub_bdv__revenue')
+              field: revenue_hk

@@ -1,0 +1,29 @@
+name: 'dbt_dynamic_typing'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'sandbox_dbt_project'
+
+# These configurations specify where dbt should look for different types of files.
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuring models
+models:
+  dbt_dynamic_typing:
+    marts:
+      +schema: marts
+
+vars:
+  # Default variables for testing
+  source_schema: 'stage'
+  source_table: 'sandbox_db_hr'

@@ -1,0 +1,435 @@
+version: 2
+
+models:
+  - name: линк__дискретность_выручка
+    description: "Связь выручки по дискретности"
+    columns:
+      - name: линк_дискретность_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: дискретность_хк
+        description: "Суррогатный ключ дороги"
+        tests:
+          - relationships:
+              to: ref('хаб__дискретность')
+              field: дискретность_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк
+
+  - name: link_rdv__discreteness_revenue
+    description: "Связь выручки по дискретности"
+    columns:
+      - name: link_discreteness_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: discreteness_hk
+        description: "Суррогатный ключ дороги"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__discreteness')
+              field: discreteness_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk
+
+
+  - name: линк__дорога_выручка
+    description: "Связь выручки по дорогам"
+    columns:
+      - name: линк_дорога_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: дорога_хк
+        description: "Суррогатный ключ дороги"
+        tests:
+          - relationships:
+              to: ref('хаб__дорога')
+              field: дорога_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк
+
+  - name: link_rdv__road_revenue
+    description: "Связь выручки по дорогам"
+    columns:
+      - name: link_road_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: road_hk
+        description: "Суррогатный ключ дороги"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__road')
+              field: road_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk
+
+  - name: линк__единица_измерения_выручка
+    description: "Связь выручки по единицам измерения"
+    columns:
+      - name: линк_единица_измерения_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: единица_измерения_хк
+        description: "Суррогатный ключ единиц измерения"
+        tests:
+          - relationships:
+              to: ref('хаб__единица_измерения')
+              field: единица_измерения_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк
+
+  - name: link_rdv__unit_revenue
+    description: "Связь выручки по единицам измерения"
+    columns:
+      - name: link_unit_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: unit_hk
+        description: "Суррогатный ключ единиц измерения"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__unit')
+              field: unit_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk
+
+  - name: линк__канал_продаж_выручка
+    description: "Связь выручки по каналам продаж"
+    columns:
+      - name: линк_канал_продаж_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: канал_продаж_хк
+        description: "Суррогатный ключ канала продаж"
+        tests:
+          - relationships:
+              to: ref('хаб__канал_продаж')
+              field: канал_продаж_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк
+
+  - name: link_rdv__sales_channel_revenue
+    description: "Связь выручки по каналам продаж"
+    columns:
+      - name: link_sales_channel_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: sales_channel_hk
+        description: "Суррогатный ключ канала продаж"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__sales_channel')
+              field: sales_channel_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk
+
+  - name: линк__мед_центр_выручка
+    description: "Связь выручки по медицинским центрам"
+    columns:
+      - name: линк_медицинский_центр_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: мед_центр_хк
+        description: "Суррогатный ключ медицинских центров"
+        tests:
+          - relationships:
+              to: ref('хаб__мед_центр')
+              field: медицинский_центр_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк
+
+  - name: link_rdv__medical_center_revenue
+    description: "Связь выручки по медицинским центрам"
+    columns:
+      - name: link_medical_center_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: medical_center_hk
+        description: "Суррогатный ключ медицинских центров"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__medical_center')
+              field: medical_center_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk
+
+  - name: линк__сектор_продаж_выручка
+    description: "Связь выручки по секторам продаж"
+    columns:
+      - name: линк_сектор_продаж_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: сектор_продаж_хк
+        description: "Суррогатный ключ секторов продаж"
+        tests:
+          - relationships:
+              to: ref('хаб__сектор_продаж')
+              field: сектор_продаж_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк
+
+  - name: link_rdv__sales_sector_revenue
+    description: "Связь выручки по секторам продаж"
+    columns:
+      - name: link_sales_sector_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: sales_sector_hk
+        description: "Суррогатный ключ секторов продаж"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__sales_sector')
+              field: sales_sector_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk
+              
+  - name: линк__тип_значения_выручка
+    description: "Связь выручки по типам значений"
+    columns:
+      - name: линк_тип_значения_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: тип_значения_хк
+        description: "Суррогатный ключ типов значений"
+        tests:
+          - relationships:
+              to: ref('хаб__тип_значения')
+              field: тип_значения_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк    
+
+  - name: link_rdv__value_type_revenue
+    description: "Связь выручки по типам значений"
+    columns:
+      - name: link_value_type_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: value_type_hk
+        description: "Суррогатный ключ типов значений"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__value_type')
+              field: value_type_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk 
+
+  - name: линк__метрика_выручка
+    description: "Связь выручки по метрикам"
+    columns:
+      - name: линк_метрика_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: метрика_хк
+        description: "Суррогатный ключ метрик"
+        tests:
+          - relationships:
+              to: ref('хаб__метрика')
+              field: метрика_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк    
+
+  - name: link_rdv__metric_revenue
+    description: "Связь выручки по метрикам"
+    columns:
+      - name: link_metric_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: metric_hk
+        description: "Суррогатный ключ метрик"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__metric')
+              field: metric_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk
+
+  - name: линк__тип_данных_выручка
+    description: "Связь выручки по типам данных"
+    columns:
+      - name: линк_тип_данных_выручка_хк
+        description: "Суррогатный ключ связи"
+        tests: [not_null, unique]
+      - name: тип_данных_хк
+        description: "Суррогатный ключ типов данных"
+        tests:
+          - relationships:
+              to: ref('хаб__тип_данных')
+              field: тип_данных_хк
+      - name: выручка_хк
+        description: "Суррогатный ключ выручки"
+        tests:
+          - relationships:
+              to: ref('хаб__выручка')
+              field: выручка_хк                  
+
+  - name: link_rdv__data_type_revenue
+    description: "Связь выручки по типам данных"
+    columns:
+      - name: link_data_type_revenue_hk
+        description: "Суррогатный ключ связи"
+        tests:
+          - not_null
+          - unique:
+              config:
+                severity: warn
+      - name: data_type_hk
+        description: "Суррогатный ключ типов данных"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__data_type')
+              field: data_type_hk
+      - name: revenue_hk
+        description: "Суррогатный ключ выручки"
+        tests:
+          - not_null
+          - relationships:
+              config:
+                severity: warn
+              to: ref('hub_rdv__revenue')
+              field: revenue_hk

@@ -1,0 +1,48 @@
+main_dbt_project:
+  target: stage
+  outputs:
+    stage:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: stage
+      threads: 1
+      keepalives_idle: 0
+    rzdm_rdv:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: main_rdv
+      threads: 1
+      keepalives_idle: 0  
+    rzdm_mart:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: main_mart
+      threads: 1
+      keepalives_idle: 0  
+    rzdm_bdv:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: main_bdv
+      threads: 1
+      keepalives_idle: 0   
+    rzdm_report:
+      type: starrocks
+      host: starrocks-fe
+      port: 9030
+      username: root
+      password: 'Q1w2e3r+'
+      schema: main_report
+      threads: 1
+      keepalives_idle: 0        
