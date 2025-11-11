@@ -3,7 +3,7 @@ main_dbt_project:
   outputs:
     stage:
       type: starrocks
-      host: starrocks-fe
+      host: kube-starrocks-fe-service
       port: 9030
       username: root
       password: 'Q1w2e3r+'
@@ -12,7 +12,7 @@ main_dbt_project:
       keepalives_idle: 0
     rzdm_rdv:
       type: starrocks
-      host: starrocks-fe
+      host: kube-starrocks-fe-service
       port: 9030
       username: root
       password: 'Q1w2e3r+'
@@ -21,7 +21,7 @@ main_dbt_project:
       keepalives_idle: 0  
     rzdm_mart:
       type: starrocks
-      host: starrocks-fe
+      host: kube-starrocks-fe-service
       port: 9030
       username: root
       password: 'Q1w2e3r+'
@@ -30,7 +30,7 @@ main_dbt_project:
       keepalives_idle: 0  
     rzdm_bdv:
       type: starrocks
-      host: starrocks-fe
+      host: kube-starrocks-fe-service
       port: 9030
       username: root
       password: 'Q1w2e3r+'
@@ -39,7 +39,7 @@ main_dbt_project:
       keepalives_idle: 0   
     rzdm_report:
       type: starrocks
-      host: starrocks-fe
+      host: kube-starrocks-fe-service
       port: 9030
       username: root
       password: 'Q1w2e3r+'
