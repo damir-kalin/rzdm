@@ -21,8 +21,8 @@ public class TestPipeline {
     public static void main(String[] args) throws Exception {
         // Set up the execution environment
         Configuration config = new Configuration();
-        config.setString(RestOptions.ADDRESS, "flink-1762357787-jobmanager");
-        config.setInteger(RestOptions.PORT, 8081);
+        config.set(RestOptions.ADDRESS, "flink-1762357787-jobmanager");
+        config.set(RestOptions.PORT, 8081);
 
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(config);
 
