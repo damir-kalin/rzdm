@@ -21,8 +21,8 @@ public class TestPipeline {
     public static void main(String[] args) throws Exception {
         // Set up the execution environment
         Configuration config = new Configuration();
-        config.setString(RestOptions.ADDRESS, "flink-jobmanager");
-        config.setInteger(RestOptions.PORT, 8082);
+        config.setString(RestOptions.ADDRESS, "flink-1762357787-jobmanager");
+        config.setInteger(RestOptions.PORT, 8081);
 
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment(config);
 
@@ -31,7 +31,7 @@ public class TestPipeline {
         String kafkaPass = System.getenv().getOrDefault("KAFKA_ADMIN_PASSWORD", "Q1w2e3r+");
 
         KafkaSource<String> source = KafkaSource.<String>builder()
-                .setBootstrapServers("kafka-0:9091,kafka-1:9091,kafka-2:9091")
+                .setBootstrapServers("kafka-1762355055-controller-0-external:29092,kafka-1762355055-controller-1-external:29092,kafka-1762355055-controller-0-external:29092")
                 .setProperty("security.protocol", "SASL_PLAINTEXT")
                 .setProperty("sasl.mechanism", "PLAIN")
                 .setProperty(
@@ -122,7 +122,7 @@ public class TestPipeline {
                         .withMaxRetries(5)
                         .build(),
                 new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
-                        .withUrl("jdbc:mysql://starrocks-fe:9030/iceberg.rzdm_test")
+                        .withUrl("jdbc:mysql://kube-starrocks-fe-mysql:9030/iceberg.rzdm_test")
                         .withDriverName("com.mysql.cj.jdbc.Driver")
                         .withUsername("root")
                         .withPassword("Q1w2e3r+")
