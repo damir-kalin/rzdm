@@ -2,18 +2,23 @@ package com.example.streaming;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
-import org.apache.flink.connector.jdbc.JdbcConnectionOptions;
+import org.apache.flink.api.connector.sink2.Sink;
+import org.apache.flink.api.connector.sink2.SinkWriter;
+import org.apache.flink.api.connector.sink2.WriterInitContext;
 import org.apache.flink.connector.jdbc.JdbcExecutionOptions;
-import org.apache.flink.connector.jdbc.JdbcSink;
 import org.apache.flink.connector.kafka.source.KafkaSource;
 import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.RestOptions;
 
 import org.json.JSONObject;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Types;
 
 public class TestPipeline {
@@ -107,30 +112,21 @@ public class TestPipeline {
         });
 
         // Create a JDBC sink to StarRocks with null handling
-        SinkFunction<Test> starRocksSink = JdbcSink.sink(
-                "INSERT INTO iceberg.rzdm_test.test (a, b, c, dttm) VALUES (?, ?, ?, ?)",
-                (statement, event) -> {
-                    // Set values with null handling
-                    setNullableInt(statement, 1, event.getA());
-                    setNullableDouble(statement, 2, event.getB());
-                    setNullableString(statement, 3, event.getC());
-                    setNullableString(statement, 4, event.getDTTM());
-                },
-                JdbcExecutionOptions.builder()
-                        .withBatchSize(1000)
-                        .withBatchIntervalMs(200)
-                        .withMaxRetries(5)
-                        .build(),
-                new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
-                        .withUrl("jdbc:mysql://kube-starrocks-fe-mysql:9030/iceberg.rzdm_test")
-                        .withDriverName("com.mysql.cj.jdbc.Driver")
-                        .withUsername("root")
-                        .withPassword("Q1w2e3r+")
-                        .build()
-        );
+        JdbcExecutionOptions executionOptions = JdbcExecutionOptions.builder()
+                .withBatchSize(1000)
+                .withBatchIntervalMs(200)
+                .withMaxRetries(5)
+                .build();
+
+        Sink<Test> starRocksSink = new StarRocksJdbcSink(
+                "jdbc:mysql://kube-starrocks-fe-mysql:9030/iceberg.rzdm_test",
+                "com.mysql.cj.jdbc.Driver",
+                "root",
+                "Q1w2e3r+",
+                executionOptions);
 
         // Add the StarRocks sink
-        eventStream.addSink(starRocksSink);
+        eventStream.sinkTo(starRocksSink).name("StarRocks Sink");
 
         // Execute the streaming pipeline
         env.execute("Streaming Data Pipeline");
@@ -160,6 +156,132 @@ public class TestPipeline {
             statement.setNull(index, Types.VARCHAR);
         } else {
             statement.setString(index, value);
+        }
+    }
+
+    private static class StarRocksJdbcSink implements Sink<Test> {
+        private final String jdbcUrl;
+        private final String driverClassName;
+        private final String username;
+        private final String password;
+        private final JdbcExecutionOptions executionOptions;
+
+        private static final String INSERT_SQL = "INSERT INTO iceberg.rzdm_test.test (a, b, c, dttm) VALUES (?, ?, ?, ?)";
+
+        private StarRocksJdbcSink(
+                String jdbcUrl,
+                String driverClassName,
+                String username,
+                String password,
+                JdbcExecutionOptions executionOptions) {
+            this.jdbcUrl = jdbcUrl;
+            this.driverClassName = driverClassName;
+            this.username = username;
+            this.password = password;
+            this.executionOptions = executionOptions;
+        }
+
+        @Override
+        public SinkWriter<Test> createWriter(WriterInitContext context) throws IOException {
+            try {
+                return new StarRocksJdbcWriter(
+                        jdbcUrl,
+                        driverClassName,
+                        username,
+                        password,
+                        executionOptions);
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new IOException("Failed to create JDBC writer", e);
+            }
+        }
+    }
+
+    private static class StarRocksJdbcWriter implements SinkWriter<Test> {
+        private final Connection connection;
+        private final PreparedStatement statement;
+        private final int batchSize;
+        private final long batchIntervalMs;
+        private final int maxRetries;
+
+        private int currentBatchCount = 0;
+        private long lastFlushTime;
+
+        private StarRocksJdbcWriter(
+                String jdbcUrl,
+                String driverClassName,
+                String username,
+                String password,
+                JdbcExecutionOptions executionOptions) throws SQLException, ClassNotFoundException {
+            Class.forName(driverClassName);
+            this.connection = DriverManager.getConnection(jdbcUrl, username, password);
+            this.connection.setAutoCommit(false);
+            this.statement = connection.prepareStatement(StarRocksJdbcSink.INSERT_SQL);
+            this.batchSize = executionOptions.getBatchSize();
+            this.batchIntervalMs = executionOptions.getBatchIntervalMs();
+            this.maxRetries = executionOptions.getMaxRetries();
+            this.lastFlushTime = System.currentTimeMillis();
+        }
+
+        @Override
+        public void write(Test value, SinkWriter.Context context) throws IOException, InterruptedException {
+            try {
+                setNullableInt(statement, 1, value.getA());
+                setNullableDouble(statement, 2, value.getB());
+                setNullableString(statement, 3, value.getC());
+                setNullableString(statement, 4, value.getDTTM());
+                statement.addBatch();
+                currentBatchCount++;
+            } catch (SQLException e) {
+                throw new IOException("Failed to add record to batch", e);
+            }
+
+            long now = System.currentTimeMillis();
+            if (currentBatchCount >= batchSize || (batchIntervalMs > 0 && (now - lastFlushTime) >= batchIntervalMs)) {
+                flush(false);
+            }
+        }
+
+        @Override
+        public void flush(boolean endOfInput) throws IOException, InterruptedException {
+            if (currentBatchCount == 0) {
+                return;
+            }
+
+            int attempt = 0;
+            while (true) {
+                try {
+                    statement.executeBatch();
+                    connection.commit();
+                    statement.clearBatch();
+                    currentBatchCount = 0;
+                    lastFlushTime = System.currentTimeMillis();
+                    return;
+                } catch (SQLException e) {
+                    try {
+                        connection.rollback();
+                    } catch (SQLException rollbackEx) {
+                        e.addSuppressed(rollbackEx);
+                    }
+                    attempt++;
+                    if (attempt > maxRetries) {
+                        throw new IOException("Failed to flush JDBC batch after " + maxRetries + " retries", e);
+                    }
+                    Thread.sleep(1000L * attempt);
+                }
+            }
+        }
+
+        @Override
+        public void close() throws Exception {
+            try {
+                flush(true);
+            } finally {
+                try {
+                    statement.close();
+                } finally {
+                    connection.close();
+                }
+            }
         }
     }
 
