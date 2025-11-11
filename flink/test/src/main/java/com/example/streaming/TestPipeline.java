@@ -36,7 +36,7 @@ public class TestPipeline {
         String kafkaPass = System.getenv().getOrDefault("KAFKA_ADMIN_PASSWORD", "Q1w2e3r+");
 
         KafkaSource<String> source = KafkaSource.<String>builder()
-                .setBootstrapServers("kafka-1762355055-controller-0-external:29092,kafka-1762355055-controller-1-external:29092,kafka-1762355055-controller-0-external:29092")
+                .setBootstrapServers("kafka-1762355055:9092")
                 .setProperty("security.protocol", "SASL_PLAINTEXT")
                 .setProperty("sasl.mechanism", "PLAIN")
                 .setProperty(
