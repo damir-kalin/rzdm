@@ -10,8 +10,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <flink.version>1.19.0</flink.version>
-        <java.version>17</java.version>
+        <flink.version>2.1.0</flink.version>
+        <kafka.connector.version>4.0.1</kafka.connector.version>
+        <jdbc.connector.version>4.0.0</jdbc.connector.version>
+        <java.version>11</java.version>
         <scala.binary.version>2.12</scala.binary.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -27,6 +29,18 @@
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
+            <artifactId>flink-core</artifactId>
+            <version>${flink.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-base</artifactId>
+            <version>${flink.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
             <artifactId>flink-clients</artifactId>
             <version>${flink.version}</version>
             <scope>provided</scope>
@@ -36,14 +50,14 @@
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-kafka</artifactId>
-            <version>3.2.0-1.19</version>
+            <version>${kafka.connector.version}</version>
         </dependency>
 
         <!-- Flink JDBC Connector -->
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-jdbc</artifactId>
-            <version>3.2.0-1.19</version>
+            <artifactId>flink-connector-jdbc-core</artifactId>
+            <version>${jdbc.connector.version}</version>
         </dependency>
 
         <!-- MySQL Connector -->

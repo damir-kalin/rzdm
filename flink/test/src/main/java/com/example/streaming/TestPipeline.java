@@ -2,14 +2,14 @@ package com.example.streaming;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
+import org.apache.flink.api.connector.sink2.Sink;
 import org.apache.flink.connector.jdbc.JdbcConnectionOptions;
 import org.apache.flink.connector.jdbc.JdbcExecutionOptions;
-import org.apache.flink.connector.jdbc.JdbcSink;
+import org.apache.flink.connector.jdbc.core.datastream.sink.JdbcSink;
 import org.apache.flink.connector.kafka.source.KafkaSource;
 import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.configuration.RestOptions;
 
@@ -106,30 +106,34 @@ public class TestPipeline {
             }
         });
 
-        // Create a JDBC sink to StarRocks with null handling
-        SinkFunction<Test> starRocksSink = JdbcSink.sink(
-                "INSERT INTO iceberg.rzdm_test.test (a, b, c, dttm) VALUES (?, ?, ?, ?)",
-                (statement, event) -> {
-                    setNullableInt(statement, 1, event.getA());
-                    setNullableDouble(statement, 2, event.getB());
-                    setNullableString(statement, 3, event.getC());
-                    setNullableString(statement, 4, event.getDTTM());
-                },
-                JdbcExecutionOptions.builder()
-                        .withBatchSize(1000)
-                        .withBatchIntervalMs(200)
-                        .withMaxRetries(5)
-                        .build(),
-                new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
-                        .withUrl("jdbc:mysql://kube-starrocks-fe-mysql:9030/iceberg.rzdm_test")
-                        .withDriverName("com.mysql.cj.jdbc.Driver")
-                        .withUsername("root")
-                        .withPassword("Q1w2e3r+")
-                        .build()
-        );
+        Sink<Test> starRocksSink = JdbcSink.<Test>builder()
+                .withExecutionOptions(
+                        JdbcExecutionOptions.builder()
+                                .withBatchSize(1000)
+                                .withBatchIntervalMs(200)
+                                .withMaxRetries(5)
+                                .build()
+                )
+                .withQueryStatement(
+                        "INSERT INTO iceberg.rzdm_test.test (a, b, c, dttm) VALUES (?, ?, ?, ?)",
+                        (statement, event) -> {
+                            setNullableInt(statement, 1, event.getA());
+                            setNullableDouble(statement, 2, event.getB());
+                            setNullableString(statement, 3, event.getC());
+                            setNullableString(statement, 4, event.getDTTM());
+                        }
+                )
+                .buildAtLeastOnce(
+                        new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
+                                .withUrl("jdbc:mysql://kube-starrocks-fe-service:9030/iceberg.rzdm_test")
+                                .withDriverName("com.mysql.cj.jdbc.Driver")
+                                .withUsername("root")
+                                .withPassword("Q1w2e3r+")
+                                .build()
+                );
 
         // Add the StarRocks sink
-        eventStream.addSink(starRocksSink).name("StarRocks Sink");
+        eventStream.sinkTo(starRocksSink).name("StarRocks Sink");
 
         // Execute the streaming pipeline
         env.execute("Streaming Data Pipeline");
