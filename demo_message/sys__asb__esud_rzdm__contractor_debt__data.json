@@ -1,0 +1,69 @@
+{
+"items": [
+{
+"Organization": "ЧУЗ «КБ «РЖД-МЕДИЦИНА» Г. САМАРА»",
+"OrganizationINN": "6311071446",
+"OrganizationKPP": "631101001",
+"OrganizationMDMKey": "25efb1c6-b41d-11ef-802b-5254001b6e46",
+"Counterparty": "\"БФ \"Почет\"\"\"",
+"CounterpartyINN": "7708123958",
+"CounterpartyKPP": "770901002",
+"CounterpartyMDMKey": "",
+"Contract": "Без договора",
+"AmountOwed": "24 000",
+"TimeStamp": "12.11.2025 14:53:44"
+},
+{
+"Organization": "ЧУЗ «КБ «РЖД-МЕДИЦИНА» Г. САМАРА»",
+"OrganizationINN": "6311071446",
+"OrganizationKPP": "631101001",
+"OrganizationMDMKey": "25efb1c6-b41d-11ef-802b-5254001b6e46",
+"Counterparty": "МИ ФНС России по управлению долгом",
+"CounterpartyINN": "7727406020",
+"CounterpartyKPP": "770801001",
+"CounterpartyMDMKey": "",
+"Contract": "Без договора",
+"AmountOwed": "12 000",
+"TimeStamp": "12.11.2025 14:53:44"
+},
+{
+"Organization": "ЧУЗ «ЦКБ «РЖД-МЕДИЦИНА»",
+"OrganizationINN": "7716511464",
+"OrganizationKPP": "771601001",
+"OrganizationMDMKey": "995c976e-b404-11ef-802b-5254001b6e46",
+"Counterparty": "\"ГБУ ДПО \"\"ЦПО СМП\"\"\"",
+"CounterpartyINN": "7825471733",
+"CounterpartyKPP": "784101001",
+"CounterpartyMDMKey": "",
+"Contract": "Без договора",
+"AmountOwed": "1 200",
+"TimeStamp": "12.11.2025 14:53:44"
+},
+{
+"Organization": "ЧУЗ «ЦКБ «РЖД-МЕДИЦИНА»",
+"OrganizationINN": "7716511464",
+"OrganizationKPP": "771601001",
+"OrganizationMDMKey": "995c976e-b404-11ef-802b-5254001b6e46",
+"Counterparty": "МИ ФНС России по управлению долгом",
+"CounterpartyINN": "7727406020",
+"CounterpartyKPP": "770801001",
+"CounterpartyMDMKey": "",
+"Contract": "Без договора",
+"AmountOwed": "12 000",
+"TimeStamp": "12.11.2025 14:53:44"
+},
+{
+"Organization": "ЧУЗ «ЦКБ «РЖД-МЕДИЦИНА»",
+"OrganizationINN": "7716511464",
+"OrganizationKPP": "771601001",
+"OrganizationMDMKey": "995c976e-b404-11ef-802b-5254001b6e46",
+"Counterparty": "ПРОФИЛАБ12",
+"CounterpartyINN": "2310173462",
+"CounterpartyKPP": "231001001",
+"CounterpartyMDMKey": "28fcbcba-816e-11ef-8834-5254001b6e46",
+"Contract": "Без договора",
+"AmountOwed": "1 200",
+"TimeStamp": "12.11.2025 14:53:44"
+}
+]
+}

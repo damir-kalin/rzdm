@@ -1,0 +1,53 @@
+[
+    {
+        "order_id": "00000000011",
+        "order_date": "12.11.2025 11:27:37",
+        "organization": {
+            "org_inn": "7716511464",
+            "org_kpp": "771601001",
+            "org_name": "Ромашка ООО", 
+    "org_mdmkey": ""
+        },
+        "org_department": {
+            "depart_code": "000000007",
+            "depart_name": "Василек",
+            "depart_mdmkey": "",
+            "depart_parentcode": "",
+            "depart_parentname": ""
+        },
+        "patient_code": "000000002",
+        "order_code": "99999",
+        "tostore": {
+            "tostore_mdmkey": "",
+            "tostore_name": "Лютик",
+            "tostore_depart": {
+                "tostore_depart_code": "",
+                "tostore_depart_name": "",
+                "tostore_depart_mdmkey": "",
+                "tostore_depart_parentcode": "",
+                "tostore_depart_parentname": ""
+            }
+        },
+        "doctor": {
+            "doctor_code": "",
+            "doctor_name": "Доктор"
+        },
+        "items": {
+            "goods": [
+                {
+                    "id_cpz": "7777",
+                    "goods_name": "911 Товар",
+                    "goods_qnty": "1"
+                }
+            ],
+            "drugs": [
+                {
+                    "drug_mnn": "",
+                    "drug_doze": "",
+                    "drug_form": "",
+                    "drug_qnty": ""
+                }
+            ]
+        }
+    }
+]

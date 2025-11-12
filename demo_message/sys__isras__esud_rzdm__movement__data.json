@@ -1,0 +1,270 @@
+[
+{
+"transfer_isras_id": "",
+"transfer_mis_id": "",
+"organization": {
+"org_inn": "2221063789",
+"org_kpp": "222101001",
+"org_name": "ЧУЗ \"КБ \"РЖД-Медицина\" г.Барнаул\"",
+"org_mdmkey": "3f6e51fe-ebc5-11ef-9853-fa163eeaff70"
+},
+"comment": {
+"transfer_num": "00000001010",
+"transfer_date": "26.11.2025 3:06:50"
+},
+"fromstore": {
+"fromstore_mdmkey": "7c332d00-efc4-11ef-9401-fa163eeaff70",
+"fromstore_name": "Аптечный пункт Барнаул, Молодежная 20",
+"fromstore_depart": {
+"fromstore_depart_code": "000000051",
+"fromstore_depart_name": "Аптечный пункт Барнаул, Молодежная 20",
+"fromstore_depart_mdmkey": "ca3d0c6a-efc3-11ef-9401-fa163eeaff70",
+"fromstore_depart_parentcode": "000000041",
+"fromstore_depart_parentname": "ЧУЗ \"КБ \"РЖД-Медицина\" Г.Барнаул\" "
+}
+},
+"tostore": {
+"tostore_mdmkey": "d0c51fca-ebc5-11ef-9853-fa163eeaff70",
+"tostore_name": "Аптечный пункт Барнаул",
+"tostore_depart": {
+"tostore_depart_code": "000000042",
+"tostore_depart_name": "Аптечный пункт Барнаул",
+"tostore_depart_mdmkey": "92d4b734-ebc5-11ef-9853-fa163eeaff70",
+"tostore_depart_parentcode": "000000041",
+"tostore_depart_parentname": "ЧУЗ \"КБ \"РЖД-Медицина\" Г.Барнаул\" "
+}
+},
+"transfer_finsource": {
+"transfer_finsource_mdmkey": null,
+"transfer_finsource_name": null
+},
+"transfer_sourcedoc_num": "00000000138",
+"transfer_sourcedoc_date": "24.02.2025 11:41:30",
+"items": [
+{
+"id_cpz" : "",	
+"goods_name": "Дюспаталин Дуо, табл. п.п.о. 135 мг+84.43 мг, бл. 10, пач. картон. 1",
+"goods_qnty": "1",
+"goods_sn": "270924",
+"goods_expdate": "30.09.2026 0:00:00",
+"goods_price": "458",
+"goods_mesunit": "уп",
+"goods_barcode": "4620011584847",
+"goods_sum": "458",
+"goods_sumnds": "41,64",
+"goods_ndspercent": "10%",
+"goods_producerprice": "298"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Риностоп спрей наз. 0.1 %, фл. 15 мл",
+"goods_qnty": "6",
+"goods_sn": "2461024",
+"goods_expdate": "30.09.2026 0:00:00",
+"goods_price": "114",
+"goods_mesunit": "уп",
+"goods_barcode": "4601669016324",
+"goods_sum": "684",
+"goods_sumnds": "62,18",
+"goods_ndspercent": "10%",
+"goods_producerprice": "82,32"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Артоксан лиоф. д/приг. р-ра для в/в и в/м введ. 20 мг №3",
+"goods_qnty": "4",
+"goods_sn": "401040",
+"goods_expdate": "30.12.2027 0:00:00",
+"goods_price": "1 229",
+"goods_mesunit": "уп",
+"goods_barcode": "8680199000245",
+"goods_sum": "4 916",
+"goods_sumnds": "446,91",
+"goods_ndspercent": "10%",
+"goods_producerprice": "860"
+},
+{
+"id_cpz" : "",	
+"goods_name": "ГРАММИДИН НЕО С АНЕСТЕТИКОМ N18 ТАБЛ Д/РАССАС",
+"goods_qnty": "2",
+"goods_sn": "2440824",
+"goods_expdate": "31.12.2026 0:00:00",
+"goods_price": "704",
+"goods_mesunit": "уп",
+"goods_barcode": "4602193010734",
+"goods_sum": "1 408",
+"goods_sumnds": "128",
+"goods_ndspercent": "10%",
+"goods_producerprice": "492,8"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Лизобакт табл. д/рассас. №30",
+"goods_qnty": "3",
+"goods_sn": "9971",
+"goods_expdate": "13.12.2028 0:00:00",
+"goods_price": "448",
+"goods_mesunit": "уп",
+"goods_barcode": "3870010001734",
+"goods_sum": "1 344",
+"goods_sumnds": "122,18",
+"goods_ndspercent": "10%",
+"goods_producerprice": "291,2"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Трекрезан, табл. 200 мг, бл. 10",
+"goods_qnty": "2",
+"goods_sn": "380924",
+"goods_expdate": "31.08.2027 0:00:00",
+"goods_price": "663",
+"goods_mesunit": "уп",
+"goods_barcode": "4630098009362",
+"goods_sum": "1 326",
+"goods_sumnds": "120,55",
+"goods_ndspercent": "10%",
+"goods_producerprice": "463,9"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Кавинтон, табл. 5 мг, бл. 25, пач. картон. 2",
+"goods_qnty": "2",
+"goods_sn": "270324",
+"goods_expdate": "01.03.2029 0:00:00",
+"goods_price": "139",
+"goods_mesunit": "уп",
+"goods_barcode": "4605469004697",
+"goods_sum": "278",
+"goods_sumnds": "25,27",
+"goods_ndspercent": "10%",
+"goods_producerprice": "109,48"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Леркамен 10 таб ппо 10мг №28",
+"goods_qnty": "1",
+"goods_sn": "41001A",
+"goods_expdate": "31.01.2027 0:00:00",
+"goods_price": "576",
+"goods_mesunit": "уп",
+"goods_barcode": "4013054004371",
+"goods_sum": "576",
+"goods_sumnds": "52,36",
+"goods_ndspercent": "10%",
+"goods_producerprice": "374,3"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Ринзасип с вит С, черная смородина, пор. д/приг. р-ра д/приема внутрь, саше 5 г, пач. картон. 5",
+"goods_qnty": "2",
+"goods_sn": "KOC24019",
+"goods_expdate": "30.04.2027 0:00:00",
+"goods_price": "356",
+"goods_mesunit": "уп",
+"goods_barcode": "3574661766829",
+"goods_sum": "712",
+"goods_sumnds": "64,73",
+"goods_ndspercent": "10%",
+"goods_producerprice": "215,9"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Септолете тотал, табл. д/рассас. 3 мг + 1 мг, бл. 8, пач. картон. 2",
+"goods_qnty": "2",
+"goods_sn": "LA2862",
+"goods_expdate": "29.02.2028 0:00:00",
+"goods_price": "579",
+"goods_mesunit": "уп",
+"goods_barcode": "3838989758240",
+"goods_sum": "1 158",
+"goods_sumnds": "105,27",
+"goods_ndspercent": "10%",
+"goods_producerprice": "376,2"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Сирдалуд табл. 4 мг №30",
+"goods_qnty": "2",
+"goods_sn": "NU49850424",
+"goods_expdate": "31.03.2027 0:00:00",
+"goods_price": "309",
+"goods_mesunit": "уп",
+"goods_barcode": "4650069870623",
+"goods_sum": "618",
+"goods_sumnds": "56,18",
+"goods_ndspercent": "10%",
+"goods_producerprice": "231,81"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Супракс, капс. 400 мг, бл. 6, пач. картон. 1",
+"goods_qnty": "1",
+"goods_sn": "24I00405",
+"goods_expdate": "31.12.2026 0:00:00",
+"goods_price": "1 441",
+"goods_mesunit": "уп",
+"goods_barcode": "4260747722702",
+"goods_sum": "1 441",
+"goods_sumnds": "131",
+"goods_ndspercent": "10%",
+"goods_producerprice": "1 008"
+},
+{
+"id_cpz" : "",	
+"goods_name": "БАКТРОБАН МАЗЬ НАЗ. 2% ТУБА 3Г №1",
+"goods_qnty": "1",
+"goods_sn": "X46C",
+"goods_expdate": "18.06.2027 0:00:00",
+"goods_price": "1 135",
+"goods_mesunit": "шт",
+"goods_barcode": "4607008133653",
+"goods_sum": "1 135",
+"goods_sumnds": "103,18",
+"goods_ndspercent": "10%",
+"goods_producerprice": "873,8"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Маска медицинская из н/тканного материала одноразовая №1",
+"goods_qnty": "1",
+"goods_sn": "1224",
+"goods_expdate": "01.12.2029 0:00:00",
+"goods_price": "272",
+"goods_mesunit": "уп",
+"goods_barcode": "4612734310711",
+"goods_sum": "272",
+"goods_sumnds": "24,73",
+"goods_ndspercent": "10%",
+"goods_producerprice": "165"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Диротон Плюс, капс. с модиф. высвоб. 1.5 мг + 5 мг, бл. 14, пач. картон. 2",
+"goods_qnty": "1",
+"goods_sn": "1080125",
+"goods_expdate": "31.03.2027 0:00:00",
+"goods_price": "609",
+"goods_mesunit": "шт",
+"goods_barcode": "4605469004857",
+"goods_sum": "609",
+"goods_sumnds": "55,36",
+"goods_ndspercent": "10%",
+"goods_producerprice": "435,3"
+},
+{
+"id_cpz" : "",	
+"goods_name": "Супракс Солютаб, табл. дисперг. 400 мг, бл. 7, пач. картон. 1",
+"goods_qnty": "1",
+"goods_sn": "4022",
+"goods_expdate": "31.05.2027 0:00:00",
+"goods_price": "1 541",
+"goods_mesunit": "уп",
+"goods_barcode": "4260747722955",
+"goods_sum": "1 541",
+"goods_sumnds": "140,09",
+"goods_ndspercent": "10%",
+"goods_producerprice": "1 077,8"
+}
+]
+}
+]

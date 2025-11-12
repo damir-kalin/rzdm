@@ -1,0 +1,235 @@
+{
+"orgname": "ЧУЗ \"КБ \"РЖД-Медицина\" г. Воронеж\"",
+"orginn": "3662090146",
+"orgkpp": "366201001",
+"kodform": "Форма_1_прил_1",
+"period1": "01.01.2025",
+"period2": "31.12.2025",
+"datarecord": [
+{
+"kodstr": "1910",
+"kodkol": "5",
+"summa": 462276535.45
+},
+{
+"kodstr": "1920",
+"kodkol": "5",
+"summa": 231387.99
+},
+{
+"kodstr": "1930",
+"kodkol": "5",
+"summa": 0
+},
+{
+"kodstr": "1940",
+"kodkol": "5",
+"summa": 255579.26
+},
+{
+"kodstr": "1950",
+"kodkol": "5",
+"summa": 103508.21
+},
+{
+"kodstr": "1960",
+"kodkol": "5",
+"summa": 1446688.55
+},
+{
+"kodstr": "1970",
+"kodkol": "5",
+"summa": 0
+},
+{
+"kodstr": "1970.1",
+"kodkol": "5",
+"summa": 0
+},
+{
+"kodstr": "1970.2",
+"kodkol": "5",
+"summa": 0
+},
+{
+"kodstr": "1980",
+"kodkol": "5",
+"summa": 260010190.03
+},
+{
+"kodstr": "1990",
+"kodkol": "5",
+"summa": 2929809.31
+},
+{
+"kodstr": "1991",
+"kodkol": "5",
+"summa": 9950587.13
+},
+{
+"kodstr": "1992",
+"kodkol": "5",
+"summa": 0
+},
+{
+"kodstr": "1993",
+"kodkol": "5",
+"summa": 133424.69
+},
+{
+"kodstr": "1994",
+"kodkol": "5",
+"summa": 5124928.66
+},
+{
+"kodstr": "1910",
+"kodkol": "4",
+"summa": 449585835.45
+},
+{
+"kodstr": "1920",
+"kodkol": "4",
+"summa": 231387.99
+},
+{
+"kodstr": "1930",
+"kodkol": "4",
+"summa": 0
+},
+{
+"kodstr": "1940",
+"kodkol": "4",
+"summa": 170294.07
+},
+{
+"kodstr": "1950",
+"kodkol": "4",
+"summa": 202341.34
+},
+{
+"kodstr": "1960",
+"kodkol": "4",
+"summa": 1614179.58
+},
+{
+"kodstr": "1970",
+"kodkol": "4",
+"summa": 0
+},
+{
+"kodstr": "1994",
+"kodkol": "4",
+"summa": 5910802.19
+},
+{
+"kodstr": "1910",
+"kodkol": "3",
+"summa": 449585835.45
+},
+{
+"kodstr": "1920",
+"kodkol": "3",
+"summa": 231387.99
+},
+{
+"kodstr": "1930",
+"kodkol": "3",
+"summa": 0
+},
+{
+"kodstr": "1940",
+"kodkol": "3",
+"summa": 276393.7
+},
+{
+"kodstr": "1950",
+"kodkol": "3",
+"summa": 202341.34
+},
+{
+"kodstr": "1960",
+"kodkol": "3",
+"summa": 1614179.58
+},
+{
+"kodstr": "1970",
+"kodkol": "3",
+"summa": 0
+},
+{
+"kodstr": "1970.1",
+"kodkol": "3",
+"summa": 0
+},
+{
+"kodstr": "1970.2",
+"kodkol": "3",
+"summa": 0
+},
+{
+"kodstr": "1980",
+"kodkol": "3",
+"summa": 262193008.65
+},
+{
+"kodstr": "1990",
+"kodkol": "3",
+"summa": 1858177.53
+},
+{
+"kodstr": "1991",
+"kodkol": "3",
+"summa": 10115692.34
+},
+{
+"kodstr": "1992",
+"kodkol": "3",
+"summa": 0
+},
+{
+"kodstr": "1970.2",
+"kodkol": "4",
+"summa": 0
+},
+{
+"kodstr": "1980",
+"kodkol": "4",
+"summa": 253105541.05
+},
+{
+"kodstr": "1993",
+"kodkol": "4",
+"summa": 0
+},
+{
+"kodstr": "1992",
+"kodkol": "4",
+"summa": 0
+},
+{
+"kodstr": "1993",
+"kodkol": "3",
+"summa": 0
+},
+{
+"kodstr": "1994",
+"kodkol": "3",
+"summa": 5918602.19
+},
+{
+"kodstr": "1991",
+"kodkol": "4",
+"summa": 10112132.34
+},
+{
+"kodstr": "1970.1",
+"kodkol": "4",
+"summa": 0
+},
+{
+"kodstr": "1990",
+"kodkol": "4",
+"summa": 1858177.53
+}
+]
+}
