@@ -28,16 +28,16 @@ with DAG(
 ) as dag:
     
     start = BashOperator(task_id='start',
-                                   bash_command = """cd / && ls opt/airflow/dbt/sandbox_dbt_project/"""
+                                   bash_command = """cd / && ls opt/airflow/dbt/main_dbt_project/"""
                                    )                                 
     dbt_run_mart = BashOperator(task_id='dbt_run_mart',
-                                   bash_command = """cd / && cd /opt/airflow/dbt/sandbox_dbt_project/models && 
-                                   dbt run --profiles-dir /opt/airflow/dbt/sandbox_dbt_project/models/rzdm_rdv --select rzdm_mart+ --target rzdm_mart"""
+                                   bash_command = """cd / && cd /opt/airflow/dbt/main_dbt_project/models && 
+                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project/models/rzdm_rdv --select rzdm_mart+ --target rzdm_mart"""
                                    ) 
                                 
     dbt_run_report = BashOperator(task_id='dbt_run_report',
-                                       bash_command = """cd / && cd /opt/airflow/dbt/sandbox_dbt_project/models && 
-                                   dbt run --profiles-dir /opt/airflow/dbt/sandbox_dbt_project/models/rzdm_rdv --select rzdm_report+ --target rzdm_report"""
+                                       bash_command = """cd / && cd /opt/airflow/dbt/main_dbt_project/models && 
+                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project/models/rzdm_rdv --select rzdm_report+ --target rzdm_report"""
                                    )                                   
 
     sync_mart = StarRocksToPostgresOperator(
