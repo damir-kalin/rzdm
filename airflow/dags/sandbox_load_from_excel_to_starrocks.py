@@ -535,6 +535,7 @@ with DAG(
     catchup=False,
     tags=["minio_file_sensor", "production", "parallel"],
     max_active_runs=1,
+    max_active_tasks=1,
     description="DAG для загрузки данных из Excel в StarRocks",
 ) as dag:
 

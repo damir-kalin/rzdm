@@ -83,7 +83,7 @@ with DAG(
     ),
     max_active_runs=1,
     # Ограничение параллельных задач для предотвращения перегрузки
-    max_active_tasks=5,
+    max_active_tasks=2,
 ) as dag:
 
     # Начальная задача
