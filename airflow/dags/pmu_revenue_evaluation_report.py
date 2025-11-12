@@ -32,12 +32,12 @@ with DAG(
                                    )                                 
     dbt_run_mart = BashOperator(task_id='dbt_run_mart',
                                    bash_command = """cd / && cd /opt/airflow/dbt/main_dbt_project/models && 
-                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project/models/rzdm_rdv --select rzdm_mart+ --target rzdm_mart"""
+                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project --select rzdm_mart+ --target rzdm_mart"""
                                    ) 
                                 
     dbt_run_report = BashOperator(task_id='dbt_run_report',
                                        bash_command = """cd / && cd /opt/airflow/dbt/main_dbt_project/models && 
-                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project/models/rzdm_rdv --select rzdm_report+ --target rzdm_report"""
+                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project --select rzdm_report+ --target rzdm_report"""
                                    )                                   
 
     sync_mart = StarRocksToPostgresOperator(

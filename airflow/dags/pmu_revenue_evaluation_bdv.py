@@ -30,8 +30,8 @@ with DAG(
                                    ) 
     dbt_run_bdv = BashOperator(task_id='dbt_run_bdv',
                                    bash_command = """cd / && cd /opt/airflow/dbt/main_dbt_project/models && 
-                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project/models/rzdm_rdv --select hub_bdv__revenue --target rzdm_bdv &&
-                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project/models/rzdm_rdv --select sat_bdv__revenue --target rzdm_bdv""")                               
+                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project --select hub_bdv__revenue --target rzdm_bdv &&
+                                   dbt run --profiles-dir /opt/airflow/dbt/main_dbt_project --select sat_bdv__revenue --target rzdm_bdv""")                               
     # Зависимости
     start >> dbt_run_bdv
     
