@@ -531,7 +531,7 @@ DEFAULT_ARGS = {
 with DAG(
     "main_load_from_excel_to_starrocks",
     default_args=DEFAULT_ARGS,
-    schedule=timedelta(seconds=30),
+    schedule=None,
     catchup=False,
     tags=["minio_file_sensor", "production", "parallel"],
     max_active_runs=1,
