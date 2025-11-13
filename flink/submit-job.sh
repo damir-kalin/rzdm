@@ -17,22 +17,24 @@ CLASSES=(
 )
 
 for CLASS in "${CLASSES[@]}"; do
-
-flink run \
-  -Drest.address=${JM_ADDRESS} \
-  -Drest.port=${JM_PORT} \
-  -m "${JM_ADDRESS}:${JM_PORT}" \
-  -d \
-  -c ${CLASS} \
-  -p 1 \
-  /opt/usrlib/streaming-data-pipeline-1.0-SNAPSHOT.jar
-
-if [ $? -eq 0 ]; then
-  echo "✅ ${CLASS} job submitted successfully"
-else
-  echo "❌ Failed to submit ${CLASS} job"
-fi
-
+  echo "Submitting ${CLASS}..."
+  
+  flink run \
+    -Drest.address=${JM_ADDRESS} \
+    -Drest.port=${JM_PORT} \
+    -m "${JM_ADDRESS}:${JM_PORT}" \
+    -d \
+    -c ${CLASS} \
+    -p 1 \
+    /opt/usrlib/streaming-data-pipeline-1.0-SNAPSHOT.jar
+  
+  EXIT_CODE=$?
+  if [ $EXIT_CODE -eq 0 ]; then
+    echo "✅ ${CLASS} job submitted successfully"
+  else
+    echo "❌ Failed to submit ${CLASS} job (exit code: ${EXIT_CODE})"
+  fi
+  echo ""
 done
 
 echo ""
