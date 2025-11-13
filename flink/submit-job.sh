@@ -11,6 +11,9 @@ CLASSES=(
   "com.example.streaming.MovementPipeline"
   "com.example.streaming.FormPipeline"
   "com.example.streaming.TestPipeline"
+  "com.example.streaming.BuildingsPipeline"
+  "com.example.streaming.ChairsPipeline"
+  "com.example.streaming.RoomsPipeline"
 )
 
 for CLASS in "${CLASSES[@]}"; do
