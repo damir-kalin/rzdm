@@ -8,6 +8,8 @@ CLASSES=(
   "com.example.streaming.ContractorDebtPipeline"
   "com.example.streaming.EmployeePipeline"
   "com.example.streaming.FormPipeline"
+  "com.example.streaming.MovementPipeline"
+  "com.example.streaming.OrderPipeline"
   "com.example.streaming.BuildingsPipeline"
   "com.example.streaming.ChairsPipeline"
   "com.example.streaming.RoomsPipeline"
